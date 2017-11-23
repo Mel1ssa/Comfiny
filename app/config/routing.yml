@@ -1,0 +1,8 @@
+comfiny_meli_blue:
+    resource: "@ComfinyMeliBlueBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
