@@ -4,6 +4,7 @@ namespace ComfinyMeliBlueBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use ComfinyMeliBlueBundle\Entity\Post;
 
 class DefaultController extends Controller
 {
@@ -12,14 +13,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('ComfinyMeliBlueBundle:Default:index.html.twig');
+        $postRepository = $this->getDoctrine()->getRepository(Post::class);
+        return $this->render('ComfinyMeliBlueBundle:Default:index.html.twig', ["posts"=> $postRepository->findAll()]);
     }
 
     /**
-     * @Route("/post/{index}")
+     * @Route("/post/{id}", requirements={"id" = "\d+"})
      */
-    public function postAction($index)
+    public function postAction($id)
     {
-        return $this->render('ComfinyMeliBlueBundle:Default:post.html.twig', ["index"=> $index]);
+        $postRepository = $this->getDoctrine()->getRepository(Post::class);
+        return $this->render('ComfinyMeliBlueBundle:Default:post.html.twig', ["post" => $postRepository->find($id)]);
     }
 }
