@@ -2,12 +2,219 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="description" content="Blog de patisserie, recettes, bons plans, tutoriels, actualité ...">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords"  content="blog, patisserie, dessert, gadgets,bons plans,découvertes, nouveautés, tutoriel, sucré, apprendre à patisser" />
+
+        <title> Comfiny {% block title %}{# - nom de la page#}{% endblock %}</title>
+
+
+        <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap-theme.min.css') }}">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        {% block stylesheets %}
+        {% endblock %}
+
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <style>
+
+            body{
+                background: white;
+                font-family: 'Sitka Text', sans-serif;
+                height: 100%;
+                margin: 0;
+            }
+            html {
+                padding-bottom: 50px;
+                min-height: 100%;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                position: relative;
+            }
+            footer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 40px;
+                background-color: #595775;
+            }
+            .navbar-inverse .navbar-brand {
+                color:white;
+            }
+            .navbar-inverse .navbar-nav>li>a {
+                color: white;
+            }
+             .widget_nav_menu {
+                border-top: double #595775;
+                border-bottom: double #595775;
+                margin-top: 30px;
+                margin-right: 180px;
+                margin-left: 180px;
+                padding: 0;
+            }
+
+            .genesis-nav-menu {
+                text-align: center;
+                width: auto;
+            }
+
+            .genesis-nav-menu a {
+                padding: 15px 22px;
+                font-family: 'Sitka Text', sans-serif;
+
+            }
+            .genesis-nav-menu .menu-item {
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+            }
+            .genesis-nav-menu a {
+                color: #595775;
+                display: block;
+                padding: 16px 30px;
+                position: relative;
+            }
+
+            .genesis-nav-menu li:hover,
+            .genesis-nav-menu a:hover {
+                color: #777;
+                text-decoration: none;
+            }
+
+            .genesis-nav-menu .current-menu-item > a {
+                color: #777;
+            }
+
+            .footer li{
+                display: inline;
+                list-style: none; /* pour enlever les puces sur IE7 */
+                margin: 10px;
+            }
+            .footer a{
+                color: white;
+            }
+        </style>
     </head>
+
+
     <body>
-        {% block body %}{% endblock %}
+        <!-- login NavBar -->
+        <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background: #595775; border-color: #595775;">
+
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#firstnavbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="firstnavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- blog name seulemnt ou carousel ( a voir)-->
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <img src="{{ asset("img/logo.png") }}" align ="middle">
+            </div>
+        </div>
+
+
+
+        <!-- second navbar -->
+        <section id="nav_menu-2" class="widget widget_nav_menu">
+            <div class="widget-wrap">
+                <nav class="nav-header">
+                    <ul id="menu-main-menu" class="menu genesis-nav-menu ">
+                        <li id="menu-item" class="menu-item">
+                            <a href="#" itemprop="url"><span itemprop="name">ACCEUIL</span></a>
+                        </li>
+                        <li id="menu-item" class="menu-item">
+                            <a href="#" itemprop="url"><span itemprop="name">ARTICLES</span></a>
+                        </li>
+                        <li id="menu-item" class="menu-item">
+                            <a href="#" itemprop="url"><span itemprop="name">TUTORIELS</span></a>
+                        </li>
+                        <li id="menu-item" class="menu-item">
+                            <a href="#" itemprop="url"><span itemprop="name">VIDEOS?</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+
+        <div class="col-lg-3  col-md-3 col-sm-12" style="margin-top:40px;float: right" >
+
+            <div class="well" align="center">
+                <h4>A propos des auteurs</h4>
+                <img src="{{ asset("img/authors.png") }}" >
+                <ul class="list-inline">
+                    <li>
+                        <a href="#" target="_blank"><i class="fa fa-facebook" style="color:#595775; font-size: 36px;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"><i class="fa fa-instagram" style="color:#595775; font-size: 36px;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"><i class="fa fa-twitter" style="color:#595775; font-size: 36px;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"><i class="fa fa-youtube-play" style="color:#595775; font-size: 36px;" aria-hidden="true"></i></a>
+                    </li>
+
+                </ul>
+                <p>
+                    Cum autem commodis intervallata temporibus convivia longa et noxia coeperint apparari vel distributio sollemnium sportularum, anxia deliberatione tractatur an exceptis his quibus vicissitudo debetur.
+                </p>
+            </div>
+
+            <div class="well" align="center">
+                <h4>Rechercher un article</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="well" align="center">
+                <h4>Tags ? Catégories ?</h4>
+
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="container"style="display: inline" align="center">
+                <ul >
+                    <li><a href="#">&copy;Copyright</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Github</a></li>
+                </ul>
+            </div>
+        </footer>
+
+                {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+
+
 </html>
