@@ -10,4 +10,14 @@ namespace ComfinyMeliBlueBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+    function find10LastPosts(){
+        return $this
+            ->createQueryBuilder('p')
+            ->orderBy('p.createdAt','DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 }
