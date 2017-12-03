@@ -1,7 +1,7 @@
 <?php
 
 namespace ComfinyMeliBlueBundle\Repository;
-
+use Doctrine\ORM\Tools\Pagination\Paginator;
 /**
  * PostRepository
  *
@@ -18,6 +18,17 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult()
             ;
+    }
+
+
+    function findPostsPerPage($page, $nbPerPage){
+
+           $query = $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt','DESC')
+            ->getQuery()
+            ->setFirstResult(($page-1) * $nbPerPage)
+            ->setMaxResults($nbPerPage);
+        return new Paginator($query, true);
     }
 
 }

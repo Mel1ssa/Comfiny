@@ -10,12 +10,29 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/{page}", requirements={"page" = "\d*"},  name="blog_home")
      */
-    public function indexAction()
+    public function indexAction($page)
     {
+        if($page== "")
+            $page = 1;
+        $postPerpage=5;
+
         $postRepository = $this->getDoctrine()->getRepository(Post::class);
-        return $this->render('ComfinyMeliBlueBundle:Default:index.html.twig', ["posts"=> $postRepository->find10LastPosts()]);
+        $posts = $postRepository->findPostsPerPage($page, $postPerpage);
+
+        $nbPages = ceil(count($posts) / $postPerpage);
+
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbPages) {
+            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+        }
+
+        return $this->render('ComfinyMeliBlueBundle:Default:index.html.twig', array(
+            "posts"=> $posts,
+            'nbPages'     => $nbPages,
+            'page'        => $page
+            ));
     }
 
     /**
@@ -30,4 +47,6 @@ class DefaultController extends Controller
 
         return $this->render('ComfinyMeliBlueBundle:Default:post.html.twig', ["post" => $post]);
     }
+
+
 }
