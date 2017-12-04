@@ -104,6 +104,7 @@
 
     <body>
         <!-- login NavBar -->
+
         <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background: #595775; border-color: #595775;">
 
             <div class="container-fluid">
@@ -128,14 +129,15 @@
         </nav>
 
         <!-- blog name seulemnt ou carousel ( a voir)-->
+        {%  block logo %}
         <div class="row">
             <div class="col-md-2 col-md-offset-5">
                 <img src="{{ asset("img/logo.png") }}" align ="middle">
             </div>
         </div>
+    {% endblock %}
 
-
-
+        {% block navbar %}
         <!-- second navbar -->
         <section id="nav_menu-2" class="widget widget_nav_menu">
             <div class="widget-wrap">
@@ -199,7 +201,7 @@
 
             </div>
         </div>
-
+        {% endblock %}
         <!-- footer -->
         <footer class="footer">
             <div class="container"style="display: inline" align="center">

@@ -25,7 +25,7 @@ class DefaultController extends Controller
 
         // Si la page n'existe pas, on retourne une 404
         if ($page > $nbPages) {
-            throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+            return $this->render('error404.html.twig');
         }
 
         return $this->render('ComfinyMeliBlueBundle:Default:index.html.twig', array(
