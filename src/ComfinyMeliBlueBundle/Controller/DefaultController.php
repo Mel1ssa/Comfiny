@@ -36,7 +36,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/post/{slug}", requirements={"slug" = "[A-Za-z_-]+"})
+     * @Route("/post/{slug}", requirements={"slug" = "[A-Za-z_-]+"}, name="post_path")
      */
     public function postAction($slug)
     {

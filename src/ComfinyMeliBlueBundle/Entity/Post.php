@@ -124,9 +124,13 @@ class Post
      *
      * @return string
      */
-    public function getContent()
+    public function getContent($length = null)
     {
+        if (false === is_null($length) && $length > 0)
+            return substr($this->content, 0, $length);
+
         return $this->content;
+
     }
 
     /**

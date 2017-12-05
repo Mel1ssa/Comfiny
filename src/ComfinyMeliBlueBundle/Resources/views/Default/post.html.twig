@@ -1,9 +1,40 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ post.title }}{% endblock %}
+
 {% block body %}
 
-                {{dump(post)}}
+    <div class="col-md-9">
 
+    <article class="blog" style="margin-top: 80px">
+        <header>
+            <h1>{{ post.title }}</h1>
+
+        </header>
+        <hr>
+        <div class="container">
+
+            <div class="col-md-6">
+                <p>{{ post.content }}</p>
+            </div>
+            <div class="col-md-3">
+                <img src="{{ asset('img/lemonpie.jpg')}}" alt="{{ post.title }} image not found" style="width:300px" />  <!-- , blog.image]|join) -->
+            </div>
+        </div>
+
+    </article>
+
+        <hr>
+        <section class="comments" id="comments">
+            <section class="previous-comments">
+                <h3>Comments</h3>
+                {#% include 'Bundle:Comment:index.html.twig' with { 'comments': comments } %#}
+            </section>
+
+            <h3>Add Comment</h3>
+            {#% render url('Bundle_comment_new', { 'post_id': post.id }) %#}
+        </section>
+    </div>
 {% endblock %}
 
 {% block stylesheets %}

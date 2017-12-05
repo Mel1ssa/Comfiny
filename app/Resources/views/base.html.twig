@@ -120,8 +120,8 @@
 
                 <div class="collapse navbar-collapse" id="firstnavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="#"><span class="fa fa-sign-in"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="fa fa-user"></span> Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -147,13 +147,13 @@
                             <a href="#" itemprop="url"><span itemprop="name">ACCEUIL</span></a>
                         </li>
                         <li id="menu-item" class="menu-item">
-                            <a href="#" itemprop="url"><span itemprop="name">ARTICLES</span></a>
+                            <a href="#" itemprop="url"><span itemprop="name">ACTUALITÉ</span></a>
+                        </li>
+                        <li id="menu-item" class="menu-item">
+                            <a href="#" itemprop="url"><span itemprop="name">RECETTES</span></a>
                         </li>
                         <li id="menu-item" class="menu-item">
                             <a href="#" itemprop="url"><span itemprop="name">TUTORIELS</span></a>
-                        </li>
-                        <li id="menu-item" class="menu-item">
-                            <a href="#" itemprop="url"><span itemprop="name">VIDEOS?</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -203,6 +203,7 @@
         </div>
         {% endblock %}
         <!-- footer -->
+        {% block footer %}
         <footer class="footer">
             <div class="container"style="display: inline" align="center">
                 <ul >
@@ -213,7 +214,7 @@
                 </ul>
             </div>
         </footer>
-
+        {% endblock %}
                 {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
