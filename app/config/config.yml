@@ -11,7 +11,7 @@ parameters:
 
 framework:
     #esi: ~
-    translator: {fallback : fr }
+    translator: {fallback : %locale% }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -88,7 +88,7 @@ assetic:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: ComfinyMeliBlueBundle\Entity\User
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
