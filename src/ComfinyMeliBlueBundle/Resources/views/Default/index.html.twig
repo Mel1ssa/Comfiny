@@ -50,7 +50,7 @@
     <ul class="pagination">
         {% for p in range(1, nbPages) %}
             <li{% if p == page %} class="active" {% endif %}>
-                <a href="{{ path('blog_home', {'page': p}) }}" style="background: #595775; border-color: #595775" >{{ p }}</a>
+                <a href="{{ path('blog_home', {'page': p}) }}"{% if p == page %}style="background: #595775; border-color: #595775"{% endif %} >{{ p }}</a>
             </li>
         {% endfor %}
     </ul>
