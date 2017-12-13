@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use ComfinyMeliBlueBundle\Entity\Post;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class BlogController extends Controller
 {
     /**
      * @Route("/{page}", requirements={"page" = "\d*"},  name="blog_home")
