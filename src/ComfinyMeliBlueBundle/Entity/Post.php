@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="ComfinyMeliBlueBundle\Repository\PostRepository")
  */
-class Post
+class Task
 {
     /**
      * @var int
@@ -45,7 +45,7 @@ class Post
     /**
      * @var bool
      *
-     * @ORM\Column(name="isDraft", type="boolean")
+     * @ORM\Column(name="isDraft", type="boolean", nullable=true)
      */
     private $isDraft;
 
@@ -66,7 +66,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="tags", type="string", length=255)
+     * @ORM\Column(name="tags", type="string", length=255, nullable=true)
      */
     private $tags;
 

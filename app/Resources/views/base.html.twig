@@ -7,188 +7,83 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords"  content="blog, patisserie, dessert, gadgets,bons plans,découvertes, nouveautés, tutoriel, sucré, apprendre à patisser" />
 
-        <title> Comfiny {% block title %}{# - nom de la page#}{% endblock %}</title>
-
-
-        <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap-theme.min.css') }}">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        {% block stylesheets %}
-        {% endblock %}
-
+        <title> Comfiny {% block title %}{% endblock %}</title>
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-        <style>
+        <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-            body{
-                background: white;
-                font-family: 'Sitka Text', sans-serif;
-                height: 100%;
-                margin: 0;
-            }
-            html {
-                padding-bottom: 50px;
-                min-height: 100%;
-                box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                position: relative;
-            }
-            footer {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 40px;
-                background-color: #595775;
-            }
-            .navbar-inverse .navbar-brand {
-                color:white;
-            }
-            .navbar-inverse .navbar-nav>li>a {
-                color: white;
-            }
-             .widget_nav_menu {
-                border-top: double #595775;
-                border-bottom: double #595775;
-                margin-top: 30px;
-                margin-right: 180px;
-                margin-left: 180px;
-                padding: 0;
-            }
+        {% block stylesheets %}{% endblock %}
 
-            .genesis-nav-menu {
-                text-align: center;
-                width: auto;
-            }
 
-            .genesis-nav-menu a {
-                padding: 15px 22px;
-                font-family: 'Sitka Text', sans-serif;
-
-            }
-            .genesis-nav-menu .menu-item {
-                display: inline-block;
-                margin: 0;
-                padding: 0;
-                text-align: left;
-            }
-            .genesis-nav-menu a {
-                color: #595775;
-                display: block;
-                padding: 16px 30px;
-                position: relative;
-            }
-
-            .genesis-nav-menu li:hover,
-            .genesis-nav-menu a:hover {
-                color: #777;
-                text-decoration: none;
-            }
-
-            .genesis-nav-menu .current-menu-item > a {
-                color: #777;
-            }
-
-            .footer li{
-                display: inline;
-                list-style: none; /* pour enlever les puces sur IE7 */
-                margin: 10px;
-            }
-            .footer a{
-                color: white;
-            }
-        </style>
     </head>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <body>
         <!-- login NavBar -->
-{% block nav1 %}
-        <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background: #595775; border-color: #595775;">
+    {% block nav1 %}
+            <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background: #595775; border-color: #595775;">
 
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#firstnavbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#firstnavbar">
+                            <span class="sr-only">Menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
 
-                <div class="collapse navbar-collapse" id="firstnavbar">
-                    <ul class="nav navbar-nav navbar-left">
-                        {% if is_granted('ROLE_USER') %}
-                            <li><a href="#"> {{ app.user.username }}</a></li>
-                        {% endif %}
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <li><a href="#"> Dashboard</a></li>
-                        {% endif %}
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if is_granted('ROLE_USER') %}
-                            <li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
-                        {% else %}
-                            <style>
-                                /* General sizing */
-                                ul.dropdown-lr {
-                                    width: 400px;
-                                }
-                                #register-submit{
-                                    background-color: #595775;
-                                    border-color: #595775;
-                                    color: white;
-                                }
-                                /* mobile fix */
-                                @media (max-width: 768px) {
-                                    .dropdown-lr h3 {
-                                        color: #eee;
-                                    }
-                                    .dropdown-lr label {
-                                        color: #eee;
-                                    }
-                                }
+                    <div class="collapse navbar-collapse" id="firstnavbar">
+                        <ul class="nav navbar-nav navbar-left">
+                            {% if is_granted('ROLE_USER') %}
+                                <li><a href="{{ path('blog_home',{'page':1}) }}"><span class="fa fa-home"></span> Comfiny</a></li>
+                            {% endif %}
 
-                            </style>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('post_add') }}"> Créer un article</a></li>
+                            {% endif %}
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if is_granted('ROLE_USER') %}
+                                <li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
+                            {% else %}
 
-                            <li class="dropdown" >
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span> Se connecter</a>
-                                <ul class="dropdown-menu dropdown-lr animated flipInX" role="menu">
-                                    <div class="col-lg-12" style="margin-top: 20px">
-                                        <form id="login-form" action="{{ path("fos_user_security_check") }}" method="post" role="form" >
-                                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate')}}" />
-                                            <div class="form-group">
-                                                <input type="text" name="_username" id="_username" tabindex="1" class="form-control" placeholder="{{ 'security.login.username'|trans }}" value="">
-                                            </div>
+                                <li class="dropdown" >
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span> Se connecter</a>
+                                    <ul class="dropdown-menu dropdown-lr animated flipInX" role="menu">
+                                        <div class="col-lg-12" style="margin-top: 20px">
+                                            <form id="login-form" action="{{ path("fos_user_security_check") }}" method="post" role="form" >
+                                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate')}}" />
+                                                <div class="form-group">
+                                                    <input type="text" name="_username" id="_username" tabindex="1" class="form-control" placeholder="{{ 'security.login.username'|trans }}" value="">
+                                                </div>
 
-                                            <div class="form-group">
-                                                <input type="password" name="_password" id="password" tabindex="2" class="form-control" placeholder="{{ 'security.login.password'|trans }}">
-                                            </div>
+                                                <div class="form-group">
+                                                    <input type="password" name="_password" id="password" tabindex="2" class="form-control" placeholder="{{ 'security.login.password'|trans }}">
+                                                </div>
 
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-xs-6 col-xs-offset-3">
-                                                        <input type="submit" name="_submit" id="register-submit" tabindex="4" class="form-control btn" value="Valider" >
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-xs-offset-3">
+                                                            <input type="submit" name="_submit" id="register-submit" tabindex="4" class="form-control btn" value="Valider" >
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </ul>
-                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="fa fa-sign-in"></span> S'inscrire</a></li>
-                         {% endif %}
+                                            </form>
+                                        </div>
+                                    </ul>
+                            <li><a href="{{ path('fos_user_registration_register') }}"><span class="fa fa-sign-in"></span> S'inscrire</a></li>
+                             {% endif %}
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-        </nav>
-{% endblock %}
-        <!-- blog name seulemnt ou carousel ( a voir)-->
+            </nav>
+    {% endblock %}
         {%  block logo %}
         <div class="row">
             <div class="col-md-2 col-md-offset-5">
@@ -196,15 +91,15 @@
             </div>
         </div>
     {% endblock %}
-
         {% block navbar %}
-        <!-- second navbar -->
+        <!-- second navbar TODO : fix alignement -->
         <section id="nav_menu-2" class="widget widget_nav_menu">
             <div class="widget-wrap">
+
                 <nav class="nav-header">
                     <ul id="menu-main-menu" class="menu genesis-nav-menu ">
                         <li id="menu-item" class="menu-item">
-                            <a href="#" itemprop="url"><span itemprop="name">ACCEUIL</span></a>
+                            <a href="{{ path('blog_home',{'page':1}) }}" itemprop="url"><span itemprop="name">ACCEUIL</span></a>
                         </li>
                         <li id="menu-item" class="menu-item">
                             <a href="#" itemprop="url"><span itemprop="name">ACTUALITÉ</span></a>
@@ -221,7 +116,7 @@
         </section>
 
 
-        <div class="col-lg-3  col-md-3 col-sm-12" style="margin-top:80px;float: right" >
+        <div class="col-lg-3  col-md-3 col-sm-12 hidden-xs" style="margin-top:80px;float: right" >
 
             <div class="well" align="center">
                 <h4>A propos des auteurs</h4>
@@ -246,7 +141,7 @@
                 </p>
             </div>
 
-            <div class="well" align="center">
+            <div class="well hidden-xs" align="center">
                 <h4>Rechercher un article</h4>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
@@ -256,8 +151,8 @@
                 </div>
             </div>
 
-            <div class="well" align="center">
-                <h4>Tags ? Catégories ?</h4>
+            <div class="well hidden-xs" align="center">
+                <h4>Tags </h4>
 
             </div>
         </div>
@@ -279,6 +174,9 @@
 
                 {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 
 
