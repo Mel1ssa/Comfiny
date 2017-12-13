@@ -1,7 +1,7 @@
 <?php
 
 namespace ComfinyMeliBlueBundle\Entity;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,8 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="ComfinyMeliBlueBundle\Repository\PostRepository")
+ *   @UniqueEntity(
+ *     fields={"title", "slug"},
+ *     message="Un article de même titre existe déjà !"
+ * )
  */
-class Task
+class Post
 {
     /**
      * @var int
@@ -24,7 +28,7 @@ class Task
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, unique=true)
      */
     private $title;
 
@@ -38,7 +42,7 @@ class Task
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255,unique=true,)
      */
     private $slug;
 
@@ -91,6 +95,7 @@ class Task
     public function setTitle($title)
     {
         $this->title = $title;
+        $this->setSlug($this->title);
 
         return $this;
     }
@@ -142,7 +147,7 @@ class Task
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = $this->slugify($slug);
 
         return $this;
     }
@@ -251,6 +256,34 @@ class Task
     public function getTags()
     {
         return $this->tags;
+    }
+
+    public function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
     }
 }
 
