@@ -19,6 +19,7 @@ footer {
     height: 40px;
     background-color: #595775;
 }
+
 .navbar-inverse .navbar-brand {
     color:white;
 }
@@ -74,4 +75,24 @@ footer {
 }
 .footer a{
     color: white;
+}
+
+/* dropdown login*/
+/* General sizing */
+ul.dropdown-lr {
+    width: 400px;
+}
+#register-submit{
+    background-color: #595775;
+    border-color: #595775;
+    color: white;
+}
+/* mobile fix */
+@media (max-width: 768px) {
+    .dropdown-lr h3 {
+        color: #eee;
+    }
+    .dropdown-lr label {
+        color: #eee;
+    }
 }
