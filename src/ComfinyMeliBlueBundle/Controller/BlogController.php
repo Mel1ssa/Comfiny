@@ -36,7 +36,7 @@ class BlogController extends Controller
     }
 
     /**
-     * @Route("/post/{slug}", requirements={"slug" = "[A-Za-z_-]+"}, name="post_path")
+     * @Route("/post/{slug}", requirements={"slug" = "[A-Za-z1-9_-]+"}, name="post_path")
      */
     public function postAction($slug)
     {
