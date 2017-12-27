@@ -16,7 +16,7 @@ class BlogController extends Controller
     {
         if($page== "")
             $page = 1;
-        $postPerpage=5;
+        $postPerpage=4;
 
         $postRepository = $this->getDoctrine()->getRepository(Post::class);
         $posts = $postRepository->findPostsPerPage($page, $postPerpage);
