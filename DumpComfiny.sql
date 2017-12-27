@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 27, 2017 at 03:52 AM
+-- Generation Time: Dec 27, 2017 at 10:19 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`) VALUES
 (1, 'Melissa', 'melissa', 'melissa.mekaoui@gmail.com', 'melissa.mekaoui@gmail.com', 1, NULL, '$2y$13$mLYOH2s8HyVsDhjhRnIedOL2apyKse6uyEcNizPwsqAOPzov4j40a', '2017-12-27 01:23:09', NULL, NULL, 'a:1:{i:0;s:10:\"ROLE_ADMIN\";}'),
-(3, 'admin', 'admin', 'admin@admin.fr', 'admin@admin.fr', 1, NULL, '$2y$13$oNS/hJqTmteHY8tIKlbXQu7yV7GnJ/XyYkILb0Xt8UTvQjhXXdyZ.', '2017-12-14 16:51:14', NULL, NULL, 'a:0:{}'),
+(3, 'admin', 'admin', 'admin@admin.fr', 'admin@admin.fr', 1, NULL, '$2y$13$oNS/hJqTmteHY8tIKlbXQu7yV7GnJ/XyYkILb0Xt8UTvQjhXXdyZ.', '2017-12-14 16:51:14', NULL, NULL, 'a:1:{i:0;s:10:\"ROLE_ADMIN\";}'),
 (6, 'Fati', 'blabla', 'fati@blabla.fr', 'blabla@blabla.fr', 1, NULL, '$2y$13$YjP0ouz0L9dxVljAE7JSDe0pzGslS7bWdJ0.agxE20kHqMRAgj3MC', '2017-12-14 17:30:06', NULL, NULL, 'a:0:{}');
 COMMIT;
 
