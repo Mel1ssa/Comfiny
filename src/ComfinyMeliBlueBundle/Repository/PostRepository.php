@@ -24,7 +24,7 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
     function findPostsPerPage($page, $nbPerPage){
 
            $query = $this->createQueryBuilder('p')
-            ->orderBy('p.createdAt','DESC')
+            ->orderBy('p.modifiedAt','DESC')
             ->getQuery()
             ->setFirstResult(($page-1) * $nbPerPage)
             ->setMaxResults($nbPerPage);
