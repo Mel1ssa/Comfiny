@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% trans_default_domain 'FOSUserBundle' %}
 <html>
@@ -11,8 +12,9 @@
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-        <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap-theme.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
@@ -22,13 +24,14 @@
     </head>
 
     <body>
+    <div>
         <!-- login NavBar -->
     {% block nav1 %}
             <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background: #595775; border-color: #595775;">
 
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#firstnavbar">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Menu</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -70,10 +73,10 @@
     {% endblock %}
         {% block navbar %}
         <!-- second navbar TODO : fix alignement -->
-        <section id="nav_menu-2" class="widget widget_nav_menu">
+        <section id="nav_menu-2" class="widget widget_nav_menu hidden-xs">
             <div class="widget-wrap">
 
-                <nav class="nav-header">
+                <nav class="nav-header" id="firstnavbar">
                     <ul id="menu-main-menu" class="menu genesis-nav-menu ">
                         <li id="menu-item" class="menu-item">
                             <a href="{{ path('blog_home',{'page':1}) }}" itemprop="url"><span itemprop="name">ACCEUIL</span></a>
@@ -93,9 +96,9 @@
         </section>
 
 
-        <div class="col-lg-3  col-md-3 col-sm-12 hidden-xs" style="margin-top:80px;float: right" >
+        <div class="col-lg-3  col-md-3 col-sm-12 hidden-sm" style="margin-top:80px;float: right" >
 
-            <div class="well" align="center">
+            <div class="well hidden-xs" align="center">
                 <h4>A propos des auteurs</h4>
                 <img src="{{ asset("img/authors.png") }}" >
                 <ul class="list-inline">
@@ -118,7 +121,7 @@
                 </p>
             </div>
 
-            <div class="well hidden-xs" align="center">
+            <div class="well hidden-sm hidden-xs" align="center">
                 <h4>Rechercher un article</h4>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
@@ -130,6 +133,13 @@
 
             <div class="well hidden-xs" align="center">
                 <h4>Tags </h4>
+                <style>
+                    .tags{
+                        display: inline-block;
+                    }
+                </style>
+                <h3 class="tags"> <a>Recettes </a> <a> Chocolat</a> <a> DIY </a> <a> Actualité</a> <a> Tartes</a>
+                    <a>Meringues </a><a> Confiserie </a><a> fruits</a></h3>
 
             </div>
         </div>
@@ -148,12 +158,13 @@
         </footer>
         {% endblock %}
 
-
-                {% block body %}{% endblock %}
+    </div>
+        {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     </body>
 
 

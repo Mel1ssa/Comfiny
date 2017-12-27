@@ -20,10 +20,7 @@
             <div class="col-md-9">
                 <p>{{ post.content| raw  }}</p>
             </div>
-            <!--
-            <div class="col-md-3">
-                <img src="{{ asset('img/lemonpie.jpg')}}" alt="{{ post.title }} image not found" style="width:300px" />
-            </div> -->
+
         </div>
 
     </article>
@@ -45,7 +42,7 @@
 
  {% block javascripts %}
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="{{asset('bundles/bootstrap/js/bootstrap.js') }}"></script>
+     <script src="{{asset('js/bootstrap.js') }}"></script>
      <script src="{{asset('js/confirmation.js') }}"></script>
      <script>
          $('[data-toggle=confirmation]').confirmation({
