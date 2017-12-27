@@ -26,7 +26,8 @@ public function buildForm(FormBuilderInterface $builder, array $options)
             'label' => false,
             'attr' => array(
                 'class' => 'postContent',
-                'placeholder' => 'tapez votre article ici (HTML permis)'
+                'placeholder' => 'tapez votre article ici (HTML permis)',
+                'rows' =>29
 
             )
         ))
