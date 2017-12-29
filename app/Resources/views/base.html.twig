@@ -1,13 +1,171 @@
+
 <!DOCTYPE html>
+{% trans_default_domain 'FOSUserBundle' %}
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="description" content="Blog de patisserie, recettes, bons plans, tutoriels, actualité ...">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords"  content="blog, patisserie, dessert, gadgets,bons plans,découvertes, nouveautés, tutoriel, sucré, apprendre à patisser" />
+
+        <title> Comfiny {% block title %}{% endblock %}</title>
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+        {% block stylesheets %}{% endblock %}
+
+
     </head>
+
     <body>
+    <div>
+        <!-- login NavBar -->
+    {% block nav1 %}
+            <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background: #595775; border-color: #595775;">
+
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="firstnavbar">
+                        <ul class="nav navbar-nav navbar-left">
+                            {% if is_granted('ROLE_USER') %}
+                                <li><a href="{{ path('blog_home',{'page':1}) }}"><span class="fa fa-home"></span> Comfiny</a></li>
+                            {% endif %}
+
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('post_add') }}"> Créer un article</a></li>
+                            {% endif %}
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if is_granted('ROLE_USER') %}
+                                <li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
+                            {% else %}
+                                <li><a href="{{ path('fos_user_security_login') }}"><span class="fa fa-user"></span> Se connecter</a></li>
+
+                                <li><a href="{{ path('fos_user_registration_register') }}"><span class="fa fa-sign-in"></span> S'inscrire</a></li>
+                             {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+
+            </nav>
+    {% endblock %}
+        {%  block logo %}
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <img src="{{ asset("img/logo.png") }}" align ="middle">
+            </div>
+        </div>
+    {% endblock %}
+        {% block navbar %}
+        <!-- second navbar TODO : fix alignement -->
+        <section id="nav_menu-2" class="widget widget_nav_menu hidden-xs">
+            <div class="widget-wrap">
+
+                <nav class="nav-header" id="firstnavbar">
+                    <ul id="menu-main-menu" class="menu genesis-nav-menu ">
+                        <li id="menu-item" class="menu-item">
+                            <a href="{{ path('blog_home',{'page':1}) }}" itemprop="url"><span itemprop="name">ACCEUIL</span></a>
+                        </li>
+                        <li id="menu-item" class="menu-item">
+                            <a href="#" itemprop="url"><span itemprop="name">ACTUALITÉ</span></a>
+                        </li>
+                        <li id="menu-item" class="menu-item">
+                            <a href="#" itemprop="url"><span itemprop="name">RECETTES</span></a>
+                        </li>
+                        <li id="menu-item" class="menu-item">
+                            <a href="#" itemprop="url"><span itemprop="name">TUTORIELS</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+
+        <div class="col-lg-3  col-md-3 col-sm-12 hidden-sm" style="margin-top:80px;float: right" >
+
+            <div class="well hidden-xs" align="center">
+                <h4>A propos des auteurs</h4>
+                <img src="{{ asset("img/authors.png") }}" >
+                <ul class="list-inline">
+                    <li>
+                        <a href="#" target="_blank"><i class="fa fa-facebook" style="color:#595775; font-size: 36px;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"><i class="fa fa-instagram" style="color:#595775; font-size: 36px;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"><i class="fa fa-twitter" style="color:#595775; font-size: 36px;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"><i class="fa fa-youtube-play" style="color:#595775; font-size: 36px;" aria-hidden="true"></i></a>
+                    </li>
+
+                </ul>
+                <p>
+                    Cum autem commodis intervallata temporibus convivia longa et noxia coeperint apparari vel distributio sollemnium sportularum, anxia deliberatione tractatur an exceptis his quibus vicissitudo debetur.
+                </p>
+            </div>
+
+            <div class="well hidden-sm hidden-xs" align="center">
+                <h4>Rechercher un article</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="well hidden-xs" align="center">
+                <h4>Tags </h4>
+                <style>
+                    .tags{
+                        display: inline-block;
+                    }
+                </style>
+                <h3 class="tags"> <a>Recettes </a> <a> Chocolat</a> <a> DIY </a> <a> Actualité</a> <a> Tartes</a>
+                    <a>Meringues </a><a> Confiserie </a><a> fruits</a></h3>
+
+            </div>
+        </div>
+        {% endblock %}
+        <!-- footer -->
+        {% block footer %}
+        <footer class="footer">
+            <div class="container"style="display: inline" align="center">
+                <ul >
+                    <li><a href="#">&copy;Copyright</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Github</a></li>
+                </ul>
+            </div>
+        </footer>
+        {% endblock %}
+
+    </div>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     </body>
+
+
 </html>

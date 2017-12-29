@@ -1,0 +1,20 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    <div class="grid"  class ="align" align="center">
+
+        <div id="login">
+
+            <h2><span class="fontawesome-lock"></span>Bienvenu {{ app.user.username }}</h2>
+                <fieldset>
+                    <p>Votre compte a bien été crée ! </p>
+                    <a href="{{ path('blog_home',{'page' : ''}) }}"> Retour à l'acceuil</a>
+                </fieldset>
+
+        </div>
+
+    </div>
+{% endblock %}

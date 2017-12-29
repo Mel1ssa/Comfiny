@@ -1,0 +1,98 @@
+body{
+    background: white;
+    font-family: 'Sitka Text', sans-serif;
+    height: 100%;
+    margin: 0;
+}
+html {
+    padding-bottom: 50px;
+    min-height: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: relative;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: #595775;
+}
+
+.navbar-inverse .navbar-brand {
+    color:white;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+.widget_nav_menu {
+    border-top: double #595775;
+    border-bottom: double #595775;
+    margin-top: 30px;
+    margin-right: 180px;
+    margin-left: 180px;
+    padding: 0;
+}
+
+.genesis-nav-menu {
+    text-align: center;
+    width: auto;
+}
+
+.genesis-nav-menu a {
+    padding: 15px 22px;
+    font-family: 'Sitka Text', sans-serif;
+
+}
+.genesis-nav-menu .menu-item {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.genesis-nav-menu a {
+    color: #595775;
+    display: block;
+    padding: 16px 30px;
+    position: relative;
+}
+
+.genesis-nav-menu li:hover,
+.genesis-nav-menu a:hover {
+    color: #777;
+    text-decoration: none;
+}
+
+.genesis-nav-menu .current-menu-item > a {
+    color: #777;
+}
+
+.footer li{
+    display: inline;
+    list-style: none; /* pour enlever les puces sur IE7 */
+    margin: 10px;
+}
+.footer a{
+    color: white;
+}
+
+/* dropdown login*/
+/* General sizing */
+ul.dropdown-lr {
+    width: 400px;
+}
+#register-submit{
+    background-color: #595775;
+    border-color: #595775;
+    color: white;
+}
+/* mobile fix */
+@media (max-width: 768px) {
+    .dropdown-lr h3 {
+        color: #eee;
+    }
+    .dropdown-lr label {
+        color: #eee;
+    }
+}

@@ -1,8 +1,53 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} - {{ post.title }}{% endblock %}
+
 {% block body %}
-{{index}}
+
+    <div class="col-md-9">
+
+    <article class="blog" style="margin-top: 80px">
+        <header>
+            <h1>{{ post.title }}</h1>
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('post_edit', {'slug' : post.slug}) }}">Modifier  |  </a> <a data-toggle="confirmation" data-title="Supprimer {{ post.title }} ?" data-placement="bottom"  href="{{ path('post_delete', {'id' : post.id}) }}" target="_blank">Supprimer</a>
+            {% endif %}
+        </header>
+        <hr>
+        <div class="container">
+
+            <div class="col-md-9">
+                <p>{{ post.content| raw  }}</p>
+            </div>
+
+        </div>
+
+    </article>
+
+        <hr>
+
+
+        <!--<section class="comments" id="comments">
+            <section class="previous-comments">
+                <h3>Comments</h3>
+                {#% include 'Bundle:Comment:index.html.twig' with { 'comments': comments } %#}
+            </section>
+
+            <h3>Add Comment</h3>
+            {#% render url('Bundle_comment_new', { 'post_id': post.id }) %#}
+        </section> -->
+    </div>
 {% endblock %}
 
-{% block stylesheets %}
-{% endblock %}
+ {% block javascripts %}
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="{{asset('js/bootstrap.js') }}"></script>
+     <script src="{{asset('js/confirmation.js') }}"></script>
+     <script>
+         $('[data-toggle=confirmation]').confirmation({
+             rootSelector: '[data-toggle=confirmation]',
+             // other options
+         });
+     </script>
+ {% endblock %}

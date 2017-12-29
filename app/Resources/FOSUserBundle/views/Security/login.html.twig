@@ -1,0 +1,33 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    <div class="grid"  class ="align" align="center">
+
+        <div id="login">
+
+            <h2><span class="fontawesome-lock"></span>Connexion</h2>
+
+            <form action="{{ path("fos_user_security_check") }}" method="POST">
+
+                <fieldset>
+
+                    <p><input type="text" name="_username" id="_username" tabindex="1" class="form-control" placeholder="{{ 'security.login.username'|trans }}" value="">
+
+                    <p><input type="password" name="_password" id="password" tabindex="2" class="form-control" placeholder="{{ 'security.login.password'|trans }}">
+
+                    <p><input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate')}}" />
+
+                    <p><input type="submit" name="_submit" id="register-submit" tabindex="1" class="btn" value="Valider" >
+
+
+                </fieldset>
+
+            </form>
+
+        </div> <!-- end login -->
+
+    </div>
+{% endblock %}
