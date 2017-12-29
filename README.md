@@ -7,9 +7,6 @@ a été réalisé dans le cadre du cours de EApplication (HMIN301) du master AIG
  -  Fati Chen 
  -  Melissa Mekaoui
 
-### Appréciations :
- 
-
 ### Remarques :
 
 1.  Le blog étant restreint à cinq routes et deux contrôleurs, certains liens sont délibérément "morts" ; ils ne servent qu'à embellir le *front-end*
