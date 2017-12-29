@@ -3,17 +3,13 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
     database_host: 127.0.0.1
-    database_port: ~
+    database_port: null
     database_name: comfiny
     database_user: root
-    database_password: ~
-    # You should uncomment this if you want to use pdo_sqlite
-    #database_path: '%kernel.project_dir%/var/data/data.sqlite'
-
+    database_password: null
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: ~
-    mailer_password: ~
-
-    # A secret key that's used to generate certain security-related tokens
+    mailer_user: Comfiny
+    mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
+    DATABASE_URL: postgres://aqmypmdbdqzzjc:23882452df4e394592595ce71238a2be3a339ce53a71918f7d719017a1f904ab@ec2-54-217-250-0.eu-west-1.compute.amazonaws.com:5432/d72c3cl32omc80
