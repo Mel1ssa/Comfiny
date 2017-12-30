@@ -12,9 +12,3 @@ parameters:
     mailer_user: Comfiny
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
-    DATABASE_URL: postgres://aqmypmdbdqzzjc:23882452df4e394592595ce71238a2be3a339ce53a71918f7d719017a1f904ab@ec2-54-217-250-0.eu-west-1.compute.amazonaws.com:5432/d72c3cl32omc80
-    PDO_Host: ec2-54-217-250-0.eu-west-1.compute.amazonaws.com
-    PDO_Database: d72c3cl32omc80
-    PDO_User: aqmypmdbdqzzjc
-    PDO_Port: 5432
-    PDO_Password: 23882452df4e394592595ce71238a2be3a339ce53a71918f7d719017a1f904ab
