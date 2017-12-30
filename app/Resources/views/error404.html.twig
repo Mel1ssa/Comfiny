@@ -1,0 +1,38 @@
+{%  extends 'base.html.twig' %}
+{% block title %} - Erreur{% endblock %}
+{%  block body %}
+    {% block logo %}
+    {% endblock %}
+    <div class="container">
+        <div class="jumbotron" style="margin-top: 60px">
+
+            <div class="text-center list-inline">
+                <i class="fa fa-5x fa-frown-o" style="color:#595775;"></i></div>
+                <h1 class="text-center">404 Page non trouvé</h1>
+                <p class="text-center"> Pas de panique, il y a autre chose à voir !</p>
+                <p class="text-center">
+                <div align="center">
+
+                    <ul class="list-inline">
+                        <li><a  href="{{ path('blog_home', {'page': ''}) }}">Acceuil</a></li>
+                        <li><a  href="#">Recettes</a></li>
+                        <li><a  href="#">Tutoriels</a></li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li><a  href="#">Dernier article</a></li>
+                        <li><a  href="#">Articles populaires</a></li>
+
+                    </ul>
+                    <ul class="list-inline">
+                        <li><a  href="#">Nous contacter</a></li>
+                        <li><a  href="#">Github</a></li>
+                        <li><a  href="#">Réseaux sociaux</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% block navbar %}
+        {% endblock %}
+    {% block footer %}
+    {% endblock %}
+{%  endblock %}
