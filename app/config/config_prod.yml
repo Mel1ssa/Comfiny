@@ -8,7 +8,11 @@ imports:
 #        query_cache_driver: apc
 doctrine:
     dbal:
-        url:  "%env(DATABASE_URL)%"
+        default_connection:   default
+        connections:
+            default:
+                driver: pdo_mysql
+                url:  '%DATABASE_URL%'
 monolog:
     handlers:
         main:
